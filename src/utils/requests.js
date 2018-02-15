@@ -13,16 +13,10 @@ const handleResponse = (response) => {
     })
 }
 
-const getUsers = () => {
-  return fetch('http://localhost:8080/api/v1/users')
-    .then(response => handleResponse(response))
-    .catch(error => console.log({error}))
-}
-
 const getDesigners = () => {
   return fetch('http://localhost:8080/api/v1/designers')
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
-module.exports = {getUsers, getDesigners}
+module.exports = {getDesigners}
