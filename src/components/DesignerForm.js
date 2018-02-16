@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/DesignerForm.css'
+import {addDesigners} from '../utils/requests'
 
 class DesignerForm extends Component {
   constructor(props) {
@@ -13,6 +14,23 @@ class DesignerForm extends Component {
     }
   }
 
+  updateDesigner = (key, event) => {
+    this.setState({ [key]: event.target.value })
+  }
+
+  addDesigner = (event) => {
+    event.preventDefault()
+    const company = this.state.company
+    const contact = this.state.contact
+    const phone = this.state.phone
+    const email = this.state.email
+    const user_id = this.state.email
+    addDesigners(company, contact, phone, email, user_id)
+      .then(response => console.log(response))
+      // .then(() => this.props.updateAllDesigners(company, contact, phone, email, user_id))
+      .catch(error => console.log({ error }))
+  }
+
   render() {
     return (
       <div className="designer-form">
@@ -22,29 +40,29 @@ class DesignerForm extends Component {
             className="input"
             type="text"
             placeholder="Company"
-            // onChange={this.updateFood.bind(this, 'food')}
+            onChange={this.updateDesigner.bind(this, 'company')}
           />
           <input
             className="input"
             type="text"
             placeholder="Contact"
-            // onChange={this.updateFood.bind(this, 'calories')}
+            onChange={this.updateDesigner.bind(this, 'contact')}
           />
           <input
             className="input"
             type="text"
             placeholder="Phone"
-          // onChange={this.updateFood.bind(this, 'calories')}
+            onChange={this.updateDesigner.bind(this, 'phone')}
           />
           <input
             className="input"
             type="text"
             placeholder="Email"
-          // onChange={this.updateFood.bind(this, 'calories')}
+            onChange={this.updateDesigner.bind(this, 'email')}
           />
           <button
             className="add-designer-btn"
-            // onClick={this.addFood}
+            onClick={this.addDesigner}
           >
           Create Designer
           </button>

@@ -19,4 +19,15 @@ const getDesigners = () => {
     .catch(error => console.log({error}))
 }
 
-module.exports = {getDesigners}
+const addDesigners = (designerCompany, designerContact, designerPhone, designerEmail) => {
+  let data = { company: designerCompany, contact: designerContact, phone: designerPhone, email: designerEmail, user_id: 2  }  
+  return fetch('https://es-capstone.herokuapp.com/api/v1/designers', {
+    method: `POST`,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(response => handleResponse(response))
+    .catch(error => console.log({error}))
+}
+
+module.exports = {getDesigners, addDesigners}

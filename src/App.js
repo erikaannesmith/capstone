@@ -17,6 +17,10 @@ class App extends Component {
       .then(designers => this.setState({ designers: designers}))
       .catch(error => console.log({ error }))
   }
+
+  // updateAllDesigners = (response) => {
+  //   this.setState({ designers: [... this.state.designers, {response} ]})
+  // }
   
   render() {
     return (
@@ -26,7 +30,9 @@ class App extends Component {
         <h3>DESIGNERS</h3>
         <div className="designer-list-form">
           <DesignerList designers={this.state.designers}/>
-          <DesignerForm />
+          <DesignerForm 
+          // updateAllDesigners={ this.updateAllDesigners }
+          />
         </div>
       </div>
     );
