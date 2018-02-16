@@ -14,7 +14,7 @@ const handleResponse = (response) => {
 }
 
 const getDesigners = () => {
-  return fetch('http://localhost:8080/api/v1/designers')
+  return fetch('https://es-capstone.herokuapp.com/api/v1/designers')
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }

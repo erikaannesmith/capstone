@@ -16,3 +16,8 @@
 .App-intro {
   font-size: large;
 }
+
+.designer-list-form {
+  display: flex;
+  justify-content: space-evenly;
+}
