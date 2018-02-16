@@ -18,6 +18,10 @@ class DesignerForm extends Component {
     this.setState({ [key]: event.target.value })
   }
 
+  resetNewDesigner = () => {
+    // this.getElementsByClassName('add-designer-form').reset()
+  }
+
   addDesigner = (event) => {
     event.preventDefault()
     const company = this.state.company
@@ -27,9 +31,11 @@ class DesignerForm extends Component {
     const user_id = this.state.email
     addDesigners(company, contact, phone, email, user_id)
       .then(response => console.log(response))
-      // .then(() => this.props.updateAllDesigners(company, contact, phone, email, user_id))
+      .then(() => this.props.updateAllDesigners(company, contact, phone, email, user_id))
+      .then(this.resetNewDesigner())
       .catch(error => console.log({ error }))
   }
+
 
   render() {
     return (

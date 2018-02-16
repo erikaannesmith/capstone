@@ -1,6 +1,7 @@
 .add-designer-form, .designer-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .input,

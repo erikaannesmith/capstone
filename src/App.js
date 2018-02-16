@@ -18,21 +18,17 @@ class App extends Component {
       .catch(error => console.log({ error }))
   }
 
-  // updateAllDesigners = (response) => {
-  //   this.setState({ designers: [... this.state.designers, {response} ]})
-  // }
+  updateAllDesigners = (company, contact, email, phone, user_id) => {
+    this.setState({ designers: [... this.state.designers, {company, contact, email, phone, user_id} ]})
+  }
   
   render() {
     return (
       <div className="App">
-        {/* <Header /> */}
-        {/* <Main /> */}
         <h3>DESIGNERS</h3>
         <div className="designer-list-form">
           <DesignerList designers={this.state.designers}/>
-          <DesignerForm 
-          // updateAllDesigners={ this.updateAllDesigners }
-          />
+          <DesignerForm updateAllDesigners={ this.updateAllDesigners } />
         </div>
       </div>
     );

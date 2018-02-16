@@ -30,4 +30,10 @@ const addDesigners = (designerCompany, designerContact, designerPhone, designerE
     .catch(error => console.log({error}))
 }
 
-module.exports = {getDesigners, addDesigners}
+const getDesigner = (id) => {
+  return fetch('https://es-capstone.herokuapp.com/api/v1/designers/' + id.toString())
+    .then(response => handleResponse(response))
+    .catch(error => console.log({error}))
+}
+
+module.exports = {getDesigners, addDesigners, getDesigner}
