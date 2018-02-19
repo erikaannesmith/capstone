@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import App from '../App'
-import DesignerShow from './DesignerShow'
+import DesignerShow from './DesignerShow/DesignerShow'
 
 const Routes = (props) => {
   console.log(props)

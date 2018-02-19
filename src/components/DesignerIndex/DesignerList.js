@@ -1,12 +1,12 @@
 import React from 'react'
 import DesignerCard from './DesignerCard'
-import '../styles/DesignerList.css'
+import '../../styles/DesignerList.css'
 
 const createDesignerCards = (designers) => {
   return designers.map((designer) => {
     return (
       <DesignerCard
-        key={ designer.id }
+        key={'designer-' + designer.id}
         designer={ designer }
       />
     )
@@ -14,7 +14,7 @@ const createDesignerCards = (designers) => {
 }
 
 const DesignerList = (props) => {
-  const designers = props.designers.reverse()
+  const designers = props.designers
   return (
     <div className="designer-list">
       { createDesignerCards(designers) }

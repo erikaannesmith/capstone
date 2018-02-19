@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import {getDesigners} from './utils/requests'
-import DesignerList from './components/DesignerList'
-import DesignerForm from './components/DesignerForm'
+import DesignerList from './components/DesignerIndex/DesignerList'
+import DesignerForm from './components/DesignerIndex/DesignerForm'
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   updateAllDesigners = (company, contact, email, phone, user_id) => {
-    this.setState({ designers: [... this.state.designers, {company, contact, email, phone, user_id} ]})
+    this.setState({ designers: [...this.state.designers, { company, contact, email, phone, user_id } ]})
   }
   
   render() {
@@ -27,7 +27,7 @@ class App extends Component {
       <div className="App">
         <h3>DESIGNERS</h3>
         <div className="designer-list-form">
-          <DesignerList designers={this.state.designers}/>
+          <DesignerList designers={this.state.designers} />
           <DesignerForm updateAllDesigners={ this.updateAllDesigners } />
         </div>
       </div>

@@ -36,4 +36,10 @@ const getDesigner = (id) => {
     .catch(error => console.log({error}))
 }
 
-module.exports = {getDesigners, addDesigners, getDesigner}
+const getStyles = (id) => {
+  return fetch('https://es-capstone.herokuapp.com/api/v1/designers/' + id.toString() + '/styles')
+    .then(response => handleResponse(response))
+    .catch(error => console.log({error}))
+}
+
+module.exports = {getDesigners, addDesigners, getDesigner, getStyles}

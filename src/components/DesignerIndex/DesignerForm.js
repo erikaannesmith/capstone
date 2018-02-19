@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../styles/DesignerForm.css'
-import {addDesigners} from '../utils/requests'
+import '../../styles/DesignerForm.css'
+import {addDesigners} from '../../utils/requests'
 
 class DesignerForm extends Component {
   constructor(props) {
