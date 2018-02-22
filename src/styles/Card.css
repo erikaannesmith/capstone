@@ -1,0 +1,24 @@
+.comment-row, .style-row, .designer-row {
+  background-color: #6bb4ff3b;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110%;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-evenly;
+}
+.designer-comment-top, .style-comment-top {
+  display: flex;
+  align-items: center;
+}
+
+.delete-designer-comment, .delete-style-comment {
+  border: 0px;    
+  background: #6bb4ff3b;
+}

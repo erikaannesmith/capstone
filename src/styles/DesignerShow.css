@@ -1,0 +1,8 @@
+.designer-styles, .designer-comments {
+  display: flex;
+  justify-content: space-around;
+}
+
+body {
+  text-align: center;
+}
