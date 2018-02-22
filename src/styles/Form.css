@@ -1,0 +1,28 @@
+.add-designer-form, .add-designer-comment-form, .style-comment-form, .add-style-comment-form, .add-designer-style-form, .designer-form, .designer-comment-form, .styles-list, .comments-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input,
+.add-designer-btn, .add-style-comment-btn, .add-designer-style-btn, .add-designer-comment-btn {
+  margin: 10px 0;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 100%;
+}
+
+.input {
+  background-color: #6bb4ff3b;
+  border-bottom: 1.25px solid#3360c5eb;
+  width: 390px;
+}
+
+.add-designer-btn, .add-designer-style-btn, .add-style-comment-btn, .add-designer-comment-btn {
+  background-color: #3360c5eb;
+  margin-top: 30px;
+  color: #fff;
+  border-radius: 4px;
+}
+

@@ -18,8 +18,8 @@ class App extends Component {
       .catch(error => console.log({ error }))
   }
 
-  updateAllDesigners = (company, contact, email, phone, user_id) => {
-    this.setState({ designers: [...this.state.designers, { company, contact, email, phone, user_id } ]})
+  updateAllDesigners = (id, company, contact, email, phone, user_id) => {
+    this.setState({ designers: [...this.state.designers, { id, company, contact, email, phone, user_id } ]})
   }
   
   render() {

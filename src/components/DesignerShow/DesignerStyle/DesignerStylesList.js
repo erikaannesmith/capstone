@@ -1,5 +1,6 @@
 import React from 'react'
 import DesignerStyleCard from './DesignerStyleCard'
+import '../../../styles/Form.css'
 
 const createDesignerStyleCards = (styles) => {
   return styles.map((style) => {
@@ -16,6 +17,7 @@ const DesignerStylesList = (props) => {
   const styles = props.styles
   return (
     <div className='styles-list'>
+      <h4>Styles</h4>    
       { createDesignerStyleCards(styles) }
     </div>
   )

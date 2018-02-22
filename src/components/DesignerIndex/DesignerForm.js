@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../styles/DesignerForm.css'
+import '../../styles/Form.css'
 import {addDesigners} from '../../utils/requests'
 
 class DesignerForm extends Component {
@@ -30,8 +30,8 @@ class DesignerForm extends Component {
     const email = this.state.email
     const user_id = this.state.email
     addDesigners(company, contact, phone, email, user_id)
-      .then(response => console.log(response))
-      .then(() => this.props.updateAllDesigners(company, contact, phone, email, user_id))
+      .then(response => response.id)
+      .then((id) => this.props.updateAllDesigners(id, company, contact, phone, email, user_id))
       .then(this.resetNewDesigner())
       .catch(error => console.log({ error }))
   }
