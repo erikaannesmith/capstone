@@ -22,6 +22,7 @@ class DesignerShow extends Component {
       styleSearchTerm: ''
     }
     this.handleClick = this.handleClick.bind(this);    
+    this.handleXClick = this.handleXClick.bind(this);        
     this.styleSearchUpdated = this.styleSearchUpdated.bind(this)    
   }
 
@@ -42,6 +43,13 @@ class DesignerShow extends Component {
     event.preventDefault()
     this.setState({
       showComponent: true,
+    });
+  }
+
+  handleXClick(event) {
+    event.preventDefault()
+    this.setState({
+      showComponent: false,
     });
   }
 
@@ -90,7 +98,7 @@ class DesignerShow extends Component {
           <DesignerContactInfo designer={designer} />
           <button onClick={this.handleClick}>Edit Contact</button>
           {this.state.showComponent ?
-            <DesignerContactEditForm editDesignerContact={this.editDesignerContact} designer={designer} /> :
+            <DesignerContactEditForm handleXClick={this.handleXClick} editDesignerContact={this.editDesignerContact} designer={designer} /> :
             null
           }
         </div>

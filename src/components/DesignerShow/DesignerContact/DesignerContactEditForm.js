@@ -30,7 +30,10 @@ class DesignerContactEditForm extends Component {
     
     return (
       <div className="designer-contact-edit-form">
-        <h4 className="edit-designer-contact-header">Edit Contact</h4>
+        <div className="designer-contact-edit-top">
+          <h4 className="edit-designer-contact-header">Edit Contact</h4>
+          <button className="designer-contact-x-btn" onClick={this.props.handleXClick}>X</button> 
+        </div>      
         <form className="edit-designer-contact-form">
           <input
             className="input"

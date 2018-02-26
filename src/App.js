@@ -15,6 +15,7 @@ class App extends Component {
       searchTerm: ''
     }
     this.handleClick = this.handleClick.bind(this);
+    this.handleXClick = this.handleXClick.bind(this);    
     this.searchUpdated = this.searchUpdated.bind(this)
   }
 
@@ -32,6 +33,13 @@ class App extends Component {
     event.preventDefault()
     this.setState({
       showComponent: true,
+    });
+  }
+
+  handleXClick(event) {
+    event.preventDefault()
+    this.setState({
+      showComponent: false,
     });
   }
 
@@ -54,7 +62,7 @@ class App extends Component {
         </div>
         <div className="designer-list-form">
           {this.state.showComponent ?
-            <DesignerForm state={this.state} updateAllDesigners={this.updateAllDesigners} /> :
+            <DesignerForm handleXClick={this.handleXClick} state={this.state} updateAllDesigners={this.updateAllDesigners} /> :
             null
           }
           <SearchInput className="search-input" onChange={this.searchUpdated} />

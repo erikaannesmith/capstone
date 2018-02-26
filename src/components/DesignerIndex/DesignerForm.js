@@ -43,9 +43,13 @@ class DesignerForm extends Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="designer-form">
-        <h4 className="add-designer-header">New Designer</h4>
+        <div className="designer-form-top">
+          <h4 className="add-designer-header">New Designer</h4>
+          <button onClick={this.props.handleXClick}>X</button>  
+        </div>      
         <form className="add-designer-form">
           <input
             className="input"

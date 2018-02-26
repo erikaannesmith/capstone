@@ -44,3 +44,12 @@
   border-radius: 4px;
 }
 
+.designer-form-top,
+.designer-contact-edit-top {
+  display: flex;
+  align-items: center;
+}
+
+.designer-contact-x-btn {
+  
+}
