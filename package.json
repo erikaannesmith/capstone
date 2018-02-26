@@ -2,8 +2,10 @@
   "name": "capstone-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://es-capstone.herokuapp.com/",
+  "homepage": "https://myusername.github.io/capstone",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "material-icons-react": "^1.0.0",
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.14",
@@ -25,6 +27,7 @@
     "react-search-input": "^0.11.3"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
