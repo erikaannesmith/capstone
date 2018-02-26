@@ -4,6 +4,9 @@ import {getDesigners} from './utils/requests'
 import DesignerList from './components/DesignerIndex/DesignerList'
 import DesignerForm from './components/DesignerIndex/DesignerForm'
 import SearchInput, { createFilter } from 'react-search-input'
+import { Link } from 'react-router-dom'
+import MaterialIcon from 'material-icons-react';
+import './styles/NavBar.css'
 
 const KEYS_TO_FILTERS = ['company', 'contact', 'phone', 'email']
 
@@ -56,9 +59,14 @@ class App extends Component {
     }
     return (
       <div className="App">
+        <div className="nav-bar">
+        <Link className="home-btn" to={'/'}>
+            <MaterialIcon icon="home" size={30} />
+        </Link>
+        </div>
         <div className="app-headers">
           <h3>DESIGNERS</h3>
-          <button onClick={this.handleClick}>+</button>
+          <button className="btn btn-primary app-head-btn" onClick={this.handleClick}>+</button>
         </div>
         <div className="designer-list-form">
           {this.state.showComponent ?

@@ -8,6 +8,9 @@ import DesignerCommentsForm from './DesignerComment/DesignerCommentsForm'
 import DesignerContactEditForm from './DesignerContact/DesignerContactEditForm'
 import '../../styles/DesignerShow.css'
 import SearchInput, { createFilter } from 'react-search-input'
+import '../../styles/NavBar.css'
+import { Link } from 'react-router-dom'
+import MaterialIcon from 'material-icons-react';
 
 const STYLE_KEYS_TO_FILTERS = ['name', 'description']
 
@@ -93,10 +96,15 @@ class DesignerShow extends Component {
 
     return (
       <div className="designer-show">
+        <div className="nav-bar">
+          <Link className="home-btn" to={'/'}>
+            <MaterialIcon icon="home" size={30} />
+          </Link>
+        </div>
         <h3>{ designer.company }</h3>
         <div className="designer-contact">
           <DesignerContactInfo designer={designer} />
-          <button onClick={this.handleClick}>Edit Contact</button>
+          <button className="btn btn-default" onClick={this.handleClick}>Edit Contact</button>
           {this.state.showComponent ?
             <DesignerContactEditForm handleXClick={this.handleXClick} editDesignerContact={this.editDesignerContact} designer={designer} /> :
             null

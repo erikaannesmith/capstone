@@ -12,10 +12,10 @@ const DesignerCard = (props) => {
       </Link>
       <div className="contact-info">
         <p className="designer-contact">{ designer.contact }</p>
-        <p>•</p>
+        <p className="dot">•</p>
         <p className="designer-phone">{ designer.phone }</p>
       </div>
-      <Mailto
+      <Mailto className="designer-email"
         email={designer.email}
       />
     </div>

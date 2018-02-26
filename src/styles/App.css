@@ -29,3 +29,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.app-head-btn {
+  margin-left: 10px;  
+}
+
+.designer-company {
+  margin-top: 10px;
+}
+
+.designer-email {
+  margin-bottom: 10px;
+}
+
+input {
+  border-radius: 3px;
+}

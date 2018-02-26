@@ -3,6 +3,9 @@ import {getStyle, getStyleComments, deleteStyleComment} from '../../utils/reques
 import StyleCommentsList from './StyleCommentsList'
 import StyleCommentsForm from './StyleCommentsForm'
 import '../../styles/StyleShow.css'
+import '../../styles/NavBar.css'
+import { Link } from 'react-router-dom'
+import MaterialIcon from 'material-icons-react';
 
 class StyleShow extends Component {
   constructor(props) {
@@ -50,6 +53,14 @@ class StyleShow extends Component {
     let comments = this.state.comments
     return (
       <div className="style-show">
+        <div className="nav-bar">
+          <Link className="home-btn" to={'/'}>
+            <MaterialIcon icon="home" size={30} />
+          </Link>
+          <Link className="prev-designer-btn" to={'/designers/' + style.designer_id}>
+            <MaterialIcon icon="arrow_back" size={30} />
+          </Link>
+        </div>
         <h3>{ style.name }</h3>
         <span>{ style.description }</span>
         <div className='style-comments'>

@@ -32,7 +32,7 @@ class DesignerContactEditForm extends Component {
       <div className="designer-contact-edit-form">
         <div className="designer-contact-edit-top">
           <h4 className="edit-designer-contact-header">Edit Contact</h4>
-          <button className="designer-contact-x-btn" onClick={this.props.handleXClick}>X</button> 
+          <button className="designer-contact-x-btn btn btn-danger" onClick={this.props.handleXClick}>X</button> 
         </div>      
         <form className="edit-designer-contact-form">
           <input

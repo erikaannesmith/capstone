@@ -27,3 +27,12 @@
 .comment-body {
   max-width: 400px;
 }
+
+.style-name, .comment-date {
+  margin-top: 7px;
+}
+
+.dot {
+    margin-right: 5px;
+    margin-left: 5px;
+}

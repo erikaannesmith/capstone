@@ -48,8 +48,9 @@
 .designer-contact-edit-top {
   display: flex;
   align-items: center;
+  margin-left: 5px;
 }
 
-.designer-contact-x-btn {
-  
+.designer-contact-x-btn, .add-designer-x-btn {
+  margin-left: 10px;  
 }
