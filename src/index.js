@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Routes from './components/Routes'
 
 ReactDOM.render((
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Routes />
   </BrowserRouter>
   ),
