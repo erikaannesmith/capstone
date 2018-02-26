@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+
 .designer-comment-top, .style-comment-top {
   display: flex;
   align-items: center;
@@ -21,4 +22,8 @@
 .delete-designer-comment, .delete-style-comment {
   border: 0px;    
   background: #6bb4ff3b;
+}
+
+.comment-body {
+  max-width: 400px;
 }

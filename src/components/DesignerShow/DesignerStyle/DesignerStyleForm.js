@@ -16,6 +16,10 @@ class DesignerStyleForm extends Component {
     this.setState({ [key]: event.target.value })
   }
 
+  resetNewStyle() {
+    document.getElementsByClassName('add-designer-style-form')[0].reset()    
+  }
+
   addDesignerStyle = (event) => {
     event.preventDefault()
     const name = this.state.name
@@ -23,6 +27,7 @@ class DesignerStyleForm extends Component {
     const designer_id = this.props.designer.id
     addDesignerStyles(name, description, designer_id)
       .then((response) => this.props.updateAllDesignerStyles(response.id, name, description, response.designer_id))
+      .then(this.resetNewStyle())
       .catch(error => console.log({ error }))
   }
 

@@ -18,17 +18,17 @@ class DesignerForm extends Component {
     this.setState({ [key]: event.target.value })
   }
 
-  resetNewDesigner = () => {
-    // this.getElementsByClassName('add-designer-form').reset()
+  resetNewDesigner() {
+    document.getElementsByClassName('add-designer-form')[0].reset()
   }
 
   addDesigner = (event) => {
     event.preventDefault()
     const company = this.state.company
     const contact = this.state.contact
-    const phone = this.state.phone
+    const phone = this.formatPhoneNumber(this.state.phone)
     const email = this.state.email
-    const user_id = this.state.email
+    const user_id = this.state.user_id
     addDesigners(company, contact, phone, email, user_id)
       .then(response => response.id)
       .then((id) => this.props.updateAllDesigners(id, company, contact, phone, email, user_id))
@@ -36,6 +36,11 @@ class DesignerForm extends Component {
       .catch(error => console.log({ error }))
   }
 
+  formatPhoneNumber(s) {
+    var s2 = ("" + s).replace(/\D/g, '');
+    var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+    return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+  }
 
   render() {
     return (

@@ -18,6 +18,14 @@
 }
 
 .designer-list-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-headers {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

@@ -5,17 +5,24 @@ import DesignerStylesList from './DesignerStyle/DesignerStylesList'
 import DesignerStyleForm from './DesignerStyle/DesignerStyleForm'
 import DesignerCommentsList from './DesignerComment/DesignerCommentsList'
 import DesignerCommentsForm from './DesignerComment/DesignerCommentsForm'
+import DesignerContactEditForm from './DesignerContact/DesignerContactEditForm'
 import '../../styles/DesignerShow.css'
+import SearchInput, { createFilter } from 'react-search-input'
+
+const STYLE_KEYS_TO_FILTERS = ['name', 'description']
 
 
 class DesignerShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      designer: [],
+      designer: null,
       styles: [],
-      comments: []
+      comments: [],
+      styleSearchTerm: ''
     }
+    this.handleClick = this.handleClick.bind(this);    
+    this.styleSearchUpdated = this.styleSearchUpdated.bind(this)    
   }
 
   componentDidMount() {
@@ -29,6 +36,13 @@ class DesignerShow extends Component {
     getDesignerComments(id)
       .then(comments => this.setState({ comments }))
       .catch(error => console.log({ error }))
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    this.setState({
+      showComponent: true,
+    });
   }
 
   updateAllDesignerStyles = (id, name, description, designer_id) => {
@@ -55,16 +69,33 @@ class DesignerShow extends Component {
     this.setState({comments: newComments})
   }
 
+  styleSearchUpdated(term) {
+    this.setState({ styleSearchTerm: term })
+  }
+
+  editDesignerContact = (key, event) => {
+    this.setState({ designer: { ...this.state.designer, [key]: event.target.value } })
+  }
+
   render() {
     let designer = this.state.designer
-    let styles = this.state.styles
     let comments = this.state.comments
+    const filteredStyles = this.state.styles.filter(createFilter(this.state.styleSearchTerm, STYLE_KEYS_TO_FILTERS))    
+    if (!designer) return null
+
     return (
       <div className="designer-show">
         <h3>{ designer.company }</h3>
-        <DesignerContactInfo designer={designer} />
+        <div className="designer-contact">
+          <DesignerContactInfo designer={designer} />
+          <button onClick={this.handleClick}>Edit Contact</button>
+          {this.state.showComponent ?
+            <DesignerContactEditForm editDesignerContact={this.editDesignerContact} designer={designer} /> :
+            null
+          }
+        </div>
         <div className="designer-styles">
-          <DesignerStylesList styles={styles} />
+          <DesignerStylesList styles={filteredStyles} styleSearchUpdated={this.styleSearchUpdated}/>
           <DesignerStyleForm updateAllDesignerStyles={this.updateAllDesignerStyles} designer={designer}/>
         </div>
         <div className="designer-comments">

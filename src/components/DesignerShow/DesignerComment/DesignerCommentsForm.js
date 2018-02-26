@@ -27,6 +27,10 @@ class DesignerCommentsForm extends Component {
     this.setState({ [key]: event.target.value })
   }
 
+  resetNewComment() {
+    document.getElementsByClassName('add-designer-comment-form')[0].reset()    
+  }
+
   addDesignerComment = (event) => {
     event.preventDefault()
     const date = this.state.date.toString().slice(0, -9)
@@ -34,6 +38,7 @@ class DesignerCommentsForm extends Component {
     const designer_id = this.props.designer.id
     addDesignerComments(date, body, designer_id)
       .then((response) => this.props.updateAllDesignerComments(response.id, date, body, designer_id))
+      .then(this.resetNewComment())
       .catch(error => console.log({ error }))
   }
 

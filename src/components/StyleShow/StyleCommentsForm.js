@@ -27,6 +27,10 @@ class StyleCommentsForm extends Component {
     this.setState({ [key]: event.target.value })
   }
 
+  resetNewComment() {
+    document.getElementsByClassName('add-style-comment-form')[0].reset()
+  }
+
   addStyleComment = (event) => {
     event.preventDefault()
     const date = this.state.date.toString().slice(0, -9)
@@ -35,6 +39,7 @@ class StyleCommentsForm extends Component {
     const designer_id = this.props.style.designer_id
     addStyleComments(date, body, style_id, designer_id)
       .then((response) => this.props.updateAllStyleComments(response.id, date, body, style_id))
+      .then(this.resetNewComment())
       .catch(error => console.log({ error }))
   }
 

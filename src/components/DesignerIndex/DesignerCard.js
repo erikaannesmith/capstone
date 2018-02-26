@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/Card.css'
 import { Link } from 'react-router-dom'
+import Mailto from 'react-protected-mailto'
 
 const DesignerCard = (props) => {
   const designer = props.designer
@@ -14,7 +15,9 @@ const DesignerCard = (props) => {
         <p>•</p>
         <p className="designer-phone">{ designer.phone }</p>
       </div>
-      <p className="designer-email">{ designer.email }</p>
+      <Mailto
+        email={designer.email}
+      />
     </div>
   )
 }
