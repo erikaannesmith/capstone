@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000'
+const API = 'https://mugat2-rails.herokuapp.com/'
 
 const handleResponse = (response) => {
   return response.json()
