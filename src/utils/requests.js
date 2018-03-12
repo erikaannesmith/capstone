@@ -1,4 +1,4 @@
-const API = 'https://mugat2-rails.herokuapp.com/'
+const API = 'https://erikaannesmith.github.io/mugat2'
 
 const handleResponse = (response) => {
   return response.json()
