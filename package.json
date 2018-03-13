@@ -2,8 +2,8 @@
   "name": "capstone-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://mugat2-rails.herokuapp.com/",
-  "homepage": "https://myusername.github.io/mugat2",
+  "proxy": "http://es-capstone.herokuapp.com/",
+  "homepage": "https://myusername.github.io/capstone",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "material-icons-react": "^1.0.0",

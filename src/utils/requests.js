@@ -1,4 +1,4 @@
-const API = 'https://mugat2-rails.herokuapp.com/'
+const API = 'https://es-capstone.herokuapp.com'
 
 const handleResponse = (response) => {
   return response.json()
@@ -56,14 +56,14 @@ const addDesignerStyles = (name, description, id) => {
 }
 
 const getDesignerComments = (id) => {
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/designer_comments')
+  return fetch(API + '/api/v1/designers/' + id.toString() + '/comments')
     .then(response => handleResponse(response))
     .catch(error => console.log({ error }))
 }
 
 const addDesignerComments = (date, body, id) => {
   let data = {date: date, body: body, designer_id: id}
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/designer_comments', {
+  return fetch(API + '/api/v1/designers/' + id.toString() + '/comments', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -73,7 +73,7 @@ const addDesignerComments = (date, body, id) => {
 }
 
 const deleteDesignerComment = (commentId, designerId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/designer_comments/' + commentId.toString(), {
+  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/comments/' + commentId.toString(), {
     method: 'DELETE',
     headers:
       { 'Content-Type': 'application/json' }
@@ -88,14 +88,14 @@ const getStyle = (designerId, styleId) => {
 }
 
 const getStyleComments = (designerId, styleId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments')
+  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/comments')
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
 const addStyleComments = (date, body, styleId, designerId) => {
   let data = {date: date, body: body, style_id: styleId}
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments', {
+  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/comments', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -105,7 +105,7 @@ const addStyleComments = (date, body, styleId, designerId) => {
 }
 
 const deleteStyleComment = (commentId, designerId, styleId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments/' + commentId.toString(), {
+  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/comments/' + commentId.toString(), {
     method: 'DELETE',
     headers:
       { 'Content-Type': 'application/json' }
