@@ -1,4 +1,4 @@
-const API = 'https://es-capstone.herokuapp.com'
+const API = 'https://mugat2-rails.herokuapp.com'
 
 const handleResponse = (response) => {
   return response.json()
