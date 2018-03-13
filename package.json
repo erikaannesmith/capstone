@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://es-capstone.herokuapp.com/",
-  "homepage": "https://myusername.github.io/capstone",
+  "homepage": "https://myusername.github.io/mugat2",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "material-icons-react": "^1.0.0",
