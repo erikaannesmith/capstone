@@ -10,7 +10,7 @@ class DesignerForm extends Component {
       contact: '',
       phone: '',
       email: '',
-      user_id: 2
+      user_id: ''
     }
   }
 
@@ -28,7 +28,7 @@ class DesignerForm extends Component {
     const contact = this.state.contact
     const phone = this.formatPhoneNumber(this.state.phone)
     const email = this.state.email
-    const user_id = this.state.user_id
+    const user_id = this.props.userId
     addDesigners(company, contact, phone, email, user_id)
       .then(response => response.id)
       .then((id) => this.props.updateAllDesigners(id, company, contact, phone, email, user_id))

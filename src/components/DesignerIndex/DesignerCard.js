@@ -5,9 +5,10 @@ import Mailto from 'react-protected-mailto'
 
 const DesignerCard = (props) => {
   const designer = props.designer
+  const user = props.user
   return (
     <div className="designer-row">
-      <Link to={`/designers/${designer.id}`}>
+      <Link to={{pathname:`/designers/${designer.id}`, state: {user}}}>
         <p className="designer-company">{ designer.company.toUpperCase() }</p>
       </Link>
       <div className="contact-info">

@@ -1,7 +1,7 @@
 export function PostUser(res, tokenId) {
   let userData = res
   return new Promise((resolve, reject) => {
-    fetch('http://localhost:8080/api/v1/auth/google_oauth2/callback', {
+    fetch('https://mugat2-rails.herokuapp.com/api/v1/auth', {
       method: "POST",
       headers: {
         "HTTP_AUTHORIZATION": `${tokenId}`,

@@ -10,8 +10,8 @@ const Routes = (props) => {
     <Switch>
       <Route path='/designers/:id/styles/:id' component={StyleShow} />      
       <Route path='/designers/:id' component={DesignerShow} />
-      <Route exact path='/' component={App} />
-      {/* <Route exact path='/' component={Login}/> */}
+      <Route exact path='/designers' component={App} />
+      <Route exact path='/' component={Login}/>
     </Switch>
   )
 }

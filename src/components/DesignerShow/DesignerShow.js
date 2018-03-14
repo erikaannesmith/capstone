@@ -30,8 +30,9 @@ class DesignerShow extends Component {
   }
 
   componentDidMount() {
+    let userId = this.props.match.params.id
     let id = this.props.match.params.id
-    getDesigner(id)
+    getDesigner(userId, id)
       .then(designer => this.setState({ designer }))
       .catch(error => console.log({ error }))      
     getStyles(id)

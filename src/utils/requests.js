@@ -15,15 +15,15 @@ const handleResponse = (response) => {
     })
 }
 
-const getDesigners = () => {
-  return fetch(API + '/api/v1/designers')
+const getDesigners = (userId) => {
+  return fetch(API + `/api/v1/users/${userId}/designers`)
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
-const addDesigners = (designerCompany, designerContact, designerPhone, designerEmail) => {
-  let data = { company: designerCompany, contact: designerContact, phone: designerPhone, email: designerEmail, user_id: 2  }  
-  return fetch(API + '/api/v1/designers', {
+const addDesigners = (designerCompany, designerContact, designerPhone, designerEmail, userId) => {
+  let data = { company: designerCompany, contact: designerContact, phone: designerPhone, email: designerEmail, user_id: userId  }  
+  return fetch(API + `/api/v1/users/${userId}/designers`, {
     method: `POST`,
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -32,8 +32,8 @@ const addDesigners = (designerCompany, designerContact, designerPhone, designerE
     .catch(error => console.log({error}))
 }
 
-const getDesigner = (id) => {
-  return fetch(API + '/api/v1/designers/' + id.toString())
+const getDesigner = (userId, id) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + id.toString())
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }

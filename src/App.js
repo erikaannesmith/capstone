@@ -17,13 +17,11 @@ class App extends Component {
       designers: [],
       searchTerm: ''
     }
-    this.handleClick = this.handleClick.bind(this);
-    this.handleXClick = this.handleXClick.bind(this);    
     this.searchUpdated = this.searchUpdated.bind(this)
   }
 
   componentDidMount() {
-    getDesigners()
+    getDesigners(this.props.user)
       .then(designers => this.setState({ designers: designers}))
       .catch(error => console.log({ error }))
   }
@@ -32,14 +30,14 @@ class App extends Component {
     this.setState({ designers: [...this.state.designers, { id, company, contact, phone, email, user_id } ]})
   }
 
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault()
     this.setState({
       showComponent: true,
     });
   }
 
-  handleXClick(event) {
+  handleXClick = (event) => {
     event.preventDefault()
     this.setState({
       showComponent: false,
@@ -70,11 +68,11 @@ class App extends Component {
         </div>
         <div className="designer-list-form">
           {this.state.showComponent ?
-            <DesignerForm handleXClick={this.handleXClick} state={this.state} updateAllDesigners={this.updateAllDesigners} /> :
+            <DesignerForm userId={this.props.user} handleXClick={this.handleXClick} state={this.state} updateAllDesigners={this.updateAllDesigners} /> :
             null
           }
           <SearchInput className="search-input" onChange={this.searchUpdated} />
-          <DesignerList designers={filteredDesigners} />
+          <DesignerList user={this.props.user} designers={filteredDesigners} />
         </div>
       </div>
     );
