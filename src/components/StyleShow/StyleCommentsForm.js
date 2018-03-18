@@ -33,11 +33,12 @@ class StyleCommentsForm extends Component {
 
   addStyleComment = (event) => {
     event.preventDefault()
+    const userId = this.props.userId
     const date = this.state.date.toString().slice(0, -9)
     const body = this.state.body
     const style_id = this.props.style.id
     const designer_id = this.props.style.designer_id
-    addStyleComments(date, body, style_id, designer_id)
+    addStyleComments(userId, date, body, style_id, designer_id)
       .then((response) => this.props.updateAllStyleComments(response.id, date, body, style_id))
       .then(this.resetNewComment())
       .catch(error => console.log({ error }))

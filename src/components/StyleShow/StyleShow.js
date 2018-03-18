@@ -17,12 +17,13 @@ class StyleShow extends Component {
   }
 
   componentDidMount() {
+    let userId = this.props.location.state.user
     let designerId = this.props.location.pathname.split('/')[2]
     let styleId = this.props.match.params.id
-    getStyle(designerId, styleId)
+    getStyle(userId, designerId, styleId)
       .then(style => this.setState({ style }))
       .catch(error => console.log({ error }))
-    getStyleComments(designerId, styleId)
+    getStyleComments(userId, designerId, styleId)
       .then(comments => this.setState({ comments }))
       .catch(error => console.log({ error }))
   }
@@ -31,11 +32,11 @@ class StyleShow extends Component {
     this.setState({ comments: [...this.state.comments, {id, date, body, style_id}] })
   }
 
-  deleteStyleComment = (item, props) => {
+  deleteStyleComment = (userId, item, props) => {
     let commentId = item.id
     let styleId = props.style.id
     let designerId = props.style.designer_id
-    deleteStyleComment(commentId, designerId, styleId)
+    deleteStyleComment(userId, commentId, designerId, styleId)
       .then(() => this.updateStyleCommentsAfterRemove(props.comments, commentId))
       .catch(error => console.log({error}))
   }
@@ -51,15 +52,16 @@ class StyleShow extends Component {
   render() {
     let style = this.state.style
     let comments = this.state.comments
+    let userId = this.props.location.state.user
     return (
       <div className="style-show">
         <div className="nav-bar">
           <Link className="home-btn" to={'/'}>
             <MaterialIcon icon="home" size={30} />
           </Link>
-          <Link className="prev-designer-btn" to={'/designers/' + style.designer_id}>
+          {/* <Link className="prev-designer-btn" to={{pathname:`/designers/` + style.designer_id, state: {userId}}}>
             <MaterialIcon icon="arrow_back" size={30} />
-          </Link>
+          </Link> */}
         </div>
         <h3>{ style.name }</h3>
         <span>{ style.description }</span>
@@ -69,8 +71,9 @@ class StyleShow extends Component {
             removeStyleComment={this.removeStyleComment}
             comments={ comments }
             style={ style }
+            userId={ userId }
           />
-          <StyleCommentsForm updateAllStyleComments={ this.updateAllStyleComments } style={ style }/>
+          <StyleCommentsForm userId={userId} updateAllStyleComments={ this.updateAllStyleComments } style={ style }/>
         </div>
       </div>
     )

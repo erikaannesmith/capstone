@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import GoogleLogin from 'react-google-login';
 import {PostUser} from './PostUser'
 import App from '../App'
+import '../styles/Login.css'
 
 class Login extends Component {
   constructor(props) {
@@ -38,12 +39,17 @@ class Login extends Component {
     }
     if (this.state.user === "") {
       return(
-        <GoogleLogin
-          clientId="384789440252-a1rtaqhaauub84iod5lfhalui36b2789.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-        />
+        <div>
+          <h1>MUGAT2</h1>
+          <div className="login-btn">
+            <GoogleLogin
+              clientId="384789440252-a1rtaqhaauub84iod5lfhalui36b2789.apps.googleusercontent.com"
+              buttonText="Google Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+            />
+          </div>
+        </div>
       )}
     else {
       return(

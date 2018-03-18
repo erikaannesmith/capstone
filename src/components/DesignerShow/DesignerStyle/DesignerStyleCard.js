@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 
 const DesignerStyleCard = (props) => {
   const style = props.style
+  let user = props.user
   return (
     <div className='style-row'>
-    <Link to={`/designers/${style.designer_id}/styles/${style.id}`}>
+    <Link to={{pathname:`/designers/${style.designer_id}/styles/${style.id}`, state: {user}}}>
       <p className='style-name'>{ style.name }</p>
     </Link>
       <p className='style-description'>{ style.description }</p>

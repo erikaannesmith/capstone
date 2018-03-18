@@ -2,7 +2,7 @@ import React from 'react'
 import StyleCommentCard from './StyleCommentCard'
 import '../../styles/Form.css'
 
-const createStyleCommentCard = (comments, props) => {
+const createStyleCommentCard = (userId, comments, props) => {
   return comments.map((comment) => {
     return (
       <StyleCommentCard
@@ -12,6 +12,7 @@ const createStyleCommentCard = (comments, props) => {
         removeStyleComment={props.removeStyleComment}
         comments={ props.comments }
         style= {props.style}
+        userId = {props.userId}
       />
     )
   })
@@ -19,10 +20,11 @@ const createStyleCommentCard = (comments, props) => {
 
 const StyleCommentsList = (props) => {
   const comments = props.comments
+  const userId = props.userId
   return (
     <div className="comments-list">
       <h4>Comments</h4>
-      { createStyleCommentCard(comments, props) }
+      { createStyleCommentCard(userId, comments, props) }
     </div>
   )
 }

@@ -5,6 +5,7 @@ import 'moment-timezone';
 import MaterialIcon from 'material-icons-react';
 
 const DesignerCommentCard = (props) => {
+  const userId = props.user
   const comment = props.comment
   const dateToFormat = comment.date
   return (
@@ -12,7 +13,7 @@ const DesignerCommentCard = (props) => {
       <div className='designer-comment-top'>
         <p className='comment-date'><Moment format="MM/DD/YYYY">{ dateToFormat }</Moment></p>
         <button className="delete-designer-comment"
-          onClick={() => props.deleteDesignerComment(comment, props)}
+          onClick={() => props.deleteDesignerComment(userId, comment, props)}
           >
           <MaterialIcon className="delete-comment-btn" icon="close" size={15} />
         </button>

@@ -33,10 +33,11 @@ class DesignerCommentsForm extends Component {
 
   addDesignerComment = (event) => {
     event.preventDefault()
+    const userId = this.props.user
     const date = this.state.date.toString().slice(0, -9)
     const body = this.state.body
     const designer_id = this.props.designer.id
-    addDesignerComments(date, body, designer_id)
+    addDesignerComments(userId, date, body, designer_id)
       .then((response) => this.props.updateAllDesignerComments(response.id, date, body, designer_id))
       .then(this.resetNewComment())
       .catch(error => console.log({ error }))

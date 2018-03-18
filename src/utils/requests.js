@@ -38,15 +38,15 @@ const getDesigner = (userId, id) => {
     .catch(error => console.log({error}))
 }
 
-const getStyles = (id) => {
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/styles')
+const getStyles = (userId, id) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + id.toString() + `/styles`)
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
-const addDesignerStyles = (name, description, id) => {
+const addDesignerStyles = (userId, name, description, id) => {
   let data = { name: name, description: description, designer_id: id }
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/styles', {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + id.toString() + '/styles', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -55,15 +55,15 @@ const addDesignerStyles = (name, description, id) => {
     .catch(error => console.log({ error }))
 }
 
-const getDesignerComments = (id) => {
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/designer_comments')
+const getDesignerComments = (userId, id) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + id.toString() + '/designer_comments')
     .then(response => handleResponse(response))
     .catch(error => console.log({ error }))
 }
 
-const addDesignerComments = (date, body, id) => {
+const addDesignerComments = (userId, date, body, id) => {
   let data = {date: date, body: body, designer_id: id}
-  return fetch(API + '/api/v1/designers/' + id.toString() + '/designer_comments', {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + id.toString() + '/designer_comments', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -72,8 +72,8 @@ const addDesignerComments = (date, body, id) => {
     .catch(error => console.log({ error }))
 }
 
-const deleteDesignerComment = (commentId, designerId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/designer_comments/' + commentId.toString(), {
+const deleteDesignerComment = (userId, commentId, designerId) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString() + '/designer_comments/' + commentId.toString(), {
     method: 'DELETE',
     headers:
       { 'Content-Type': 'application/json' }
@@ -81,21 +81,21 @@ const deleteDesignerComment = (commentId, designerId) => {
     .catch(error => console.log({ error }));
 }
 
-const getStyle = (designerId, styleId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString())
+const getStyle = (userId, designerId, styleId) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString() + '/styles/' + styleId.toString())
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
-const getStyleComments = (designerId, styleId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments')
+const getStyleComments = (userId, designerId, styleId) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments')
     .then(response => handleResponse(response))
     .catch(error => console.log({error}))
 }
 
-const addStyleComments = (date, body, styleId, designerId) => {
+const addStyleComments = (userId, date, body, styleId, designerId) => {
   let data = {date: date, body: body, style_id: styleId}
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments', {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -104,8 +104,8 @@ const addStyleComments = (date, body, styleId, designerId) => {
     .catch(error => console.log({error}))
 }
 
-const deleteStyleComment = (commentId, designerId, styleId) => {
-  return fetch(API + '/api/v1/designers/' + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments/' + commentId.toString(), {
+const deleteStyleComment = (userId, commentId, designerId, styleId) => {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString() + '/styles/' + styleId.toString() + '/style_comments/' + commentId.toString(), {
     method: 'DELETE',
     headers:
       { 'Content-Type': 'application/json' }
@@ -113,13 +113,13 @@ const deleteStyleComment = (commentId, designerId, styleId) => {
     .catch(error => console.log({error}))
 }
 
-const updateDesignerContact = (updatedCompany, updatedContact, updatedPhone, updatedEmail, designerId) => {
+const updateDesignerContact = (userId, updatedCompany, updatedContact, updatedPhone, updatedEmail, designerId) => {
   let updatedData = {company: updatedCompany,
                     contact: updatedContact,
                     phone: updatedPhone,
                     email: updatedEmail,
                     designerId: designerId}
-  return fetch(API + '/api/v1/designers/' + designerId.toString(), {
+  return fetch(API + `/api/v1/users/${userId}/designers/` + designerId.toString(), {
     method: 'PATCH',
     headers:
       { 'Content-Type': 'application/json' },

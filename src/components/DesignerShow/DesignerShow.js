@@ -22,7 +22,7 @@ class DesignerShow extends Component {
       designer: null,
       styles: [],
       comments: [],
-      styleSearchTerm: ''
+      styleSearchTerm: '',
     }
     this.handleClick = this.handleClick.bind(this);    
     this.handleXClick = this.handleXClick.bind(this);        
@@ -30,15 +30,15 @@ class DesignerShow extends Component {
   }
 
   componentDidMount() {
-    let userId = this.props.match.params.id
+    let userId = this.props.location.state.user
     let id = this.props.match.params.id
     getDesigner(userId, id)
       .then(designer => this.setState({ designer }))
       .catch(error => console.log({ error }))      
-    getStyles(id)
+    getStyles(userId, id)
       .then(styles => this.setState({ styles }))
       .catch(error => console.log({ error }))
-    getDesignerComments(id)
+    getDesignerComments(userId, id)
       .then(comments => this.setState({ comments }))
       .catch(error => console.log({ error }))
   }
@@ -65,12 +65,12 @@ class DesignerShow extends Component {
     this.setState({ comments: [...this.state.comments, { id, date, body, designer_id } ]})
   }
 
-  deleteDesignerComment = (item, props) => {
+  deleteDesignerComment = (userId, item, props) => {
     let commentId = item.id
     let designerId = item.designer_id
-    deleteDesignerComment(commentId, designerId)
-    .then(() => this.updateDesignerCommentsAfterRemove(props.comments, commentId))
-    .catch(error => console.log({error}))
+    deleteDesignerComment(userId, commentId, designerId)
+      .then(() => this.updateDesignerCommentsAfterRemove(props.comments, commentId))
+      .catch(error => console.log({error}))
   }
   
   updateDesignerCommentsAfterRemove = (comments, commentId) => {
@@ -92,9 +92,9 @@ class DesignerShow extends Component {
   render() {
     let designer = this.state.designer
     let comments = this.state.comments
+    let user = this.props.location.state.user
     const filteredStyles = this.state.styles.filter(createFilter(this.state.styleSearchTerm, STYLE_KEYS_TO_FILTERS))    
     if (!designer) return null
-
     return (
       <div className="designer-show">
         <div className="nav-bar">
@@ -107,20 +107,21 @@ class DesignerShow extends Component {
           <DesignerContactInfo designer={designer} />
           <button className="btn btn-default" onClick={this.handleClick}>Edit Contact</button>
           {this.state.showComponent ?
-            <DesignerContactEditForm handleXClick={this.handleXClick} editDesignerContact={this.editDesignerContact} designer={designer} /> :
+            <DesignerContactEditForm user={user} handleXClick={this.handleXClick} editDesignerContact={this.editDesignerContact} designer={designer} /> :
             null
           }
         </div>
         <div className="designer-styles">
-          <DesignerStylesList styles={filteredStyles} styleSearchUpdated={this.styleSearchUpdated}/>
+          <DesignerStylesList designer={designer} user={user} styles={filteredStyles} styleSearchUpdated={this.styleSearchUpdated}/>
           <DesignerStyleForm updateAllDesignerStyles={this.updateAllDesignerStyles} designer={designer}/>
         </div>
         <div className="designer-comments">
           <DesignerCommentsList 
+            user={user}
             deleteDesignerComment={this.deleteDesignerComment}
             removeDesignerComment={this.removeDesignerComment}
             comments={comments}/>
-          <DesignerCommentsForm updateAllDesignerComments={this.updateAllDesignerComments} designer={ designer }/>
+          <DesignerCommentsForm user={user} updateAllDesignerComments={this.updateAllDesignerComments} designer={ designer }/>
         </div>
       </div>
     )

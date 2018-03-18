@@ -25,7 +25,8 @@ class DesignerStyleForm extends Component {
     const name = this.state.name
     const description = this.state.description
     const designer_id = this.props.designer.id
-    addDesignerStyles(name, description, designer_id)
+    const userId = this.props.designer.user_id
+    addDesignerStyles(userId, name, description, designer_id)
       .then((response) => this.props.updateAllDesignerStyles(response.id, name, description, response.designer_id))
       .then(this.resetNewStyle())
       .catch(error => console.log({ error }))

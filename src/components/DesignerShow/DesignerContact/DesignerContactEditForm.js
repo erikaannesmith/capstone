@@ -5,12 +5,13 @@ import '../../../styles/Form.css'
 class DesignerContactEditForm extends Component {
   updateDesignerContact = (event) => {
     event.preventDefault()
+    const userId = this.props.user
     const company = this.props.designer.company
     const contact = this.props.designer.contact
     const phone = this.formatPhoneNumber(this.props.designer.phone)
     const email = this.props.designer.email
     const designerId = this.props.designer.id
-    updateDesignerContact(company, contact, phone, email, designerId)
+    updateDesignerContact(userId, company, contact, phone, email, designerId)
       .catch(error => console.log({error}))
   }
 
