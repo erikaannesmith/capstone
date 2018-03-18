@@ -43,6 +43,7 @@ class Login extends Component {
           <h1>MUGAT2</h1>
           <div className="login-btn">
             <GoogleLogin
+              className="google-lgn"
               clientId="384789440252-a1rtaqhaauub84iod5lfhalui36b2789.apps.googleusercontent.com"
               buttonText="Google Login"
               onSuccess={responseGoogle}
