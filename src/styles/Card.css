@@ -1,5 +1,5 @@
 .comment-row, .style-row, .designer-row {
-  background-color: #6bb4ff3b;
+  background-color: lavender;
   border: 1px solid;
   border-radius: 10px;
   margin: 5px;
@@ -7,6 +7,14 @@
   flex-direction: column;
   align-items: center;
   width: 110%;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
 }
 
 .contact-info {
@@ -21,7 +29,7 @@
 
 .delete-designer-comment, .delete-style-comment {
   border: 0px;    
-  background: #6bb4ff3b;
+  background: lavender;
 }
 
 .comment-body {
@@ -35,4 +43,12 @@
 .dot {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.email {
+  display: flex;
+}
+
+.icons {
+  padding-right: 4px;
 }

@@ -102,7 +102,7 @@ class DesignerShow extends Component {
             <MaterialIcon icon="home" size={30} />
           </Link>
         </div>
-        <h3>{ designer.company }</h3>
+        <h3>{ designer.company.toUpperCase() }</h3>
         <div className="designer-contact">
           <DesignerContactInfo designer={designer} />
           <button className="btn btn-default" onClick={this.handleClick}>Edit Contact</button>

@@ -1,0 +1,4 @@
+.phone, .email, .contact {
+  display: flex;
+  justify-content: center;
+}
