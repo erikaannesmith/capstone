@@ -24,12 +24,19 @@ class StyleShow extends Component {
       .then(style => this.setState({ style }))
       .catch(error => console.log({ error }))
     getStyleComments(userId, designerId, styleId)
-      .then(comments => this.setState({ comments }))
+      .then(comments => this.setState({
+        comments: comments.sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date);
+        }) }))
       .catch(error => console.log({ error }))
   }
 
   updateAllStyleComments = (id, date, body, style_id) => {
-    this.setState({ comments: [...this.state.comments, {id, date, body, style_id}] })
+    let unsortedComments = [...this.state.comments, { id, date, body, style_id }]
+    let sortedComments = unsortedComments.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    })
+    this.setState({ comments: sortedComments })
   }
 
   deleteStyleComment = (userId, item, props) => {
