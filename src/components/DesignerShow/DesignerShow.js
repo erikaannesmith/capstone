@@ -39,7 +39,10 @@ class DesignerShow extends Component {
       .then(styles => this.setState({ styles }))
       .catch(error => console.log({ error }))
     getDesignerComments(userId, id)
-      .then(comments => this.setState({ comments }))
+      .then(comments => this.setState({
+        comments: comments.sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date);
+        }) }))
       .catch(error => console.log({ error }))
   }
 
@@ -62,7 +65,11 @@ class DesignerShow extends Component {
   }
 
   updateAllDesignerComments = (id, date, body, designer_id) => {
-    this.setState({ comments: [...this.state.comments, { id, date, body, designer_id } ]})
+    let unsortedComments = [...this.state.comments, { id, date, body, designer_id }]
+    let sortedComments = unsortedComments.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    })
+    this.setState({ comments: sortedComments})
   }
 
   deleteDesignerComment = (userId, item, props) => {
